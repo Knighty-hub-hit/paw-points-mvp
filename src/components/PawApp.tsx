@@ -11,6 +11,7 @@ import { initial, requiresAccount } from '../lib/engine';
 import { CatRoom, CreditsPage, DemoAuth, LoginPrompt } from './Round4';
 import type { Command } from '../lib/engine';
 import { DemoContext } from './DemoContext';
+import { mirror, refreshLive } from '../lib/bridge';
 import { CatsPage, CatPage, CompetitionPage } from './Discovery';
 import { VirtualPet } from './VirtualPet';
 import { FansPage, CreditsInfo } from './Round3';
@@ -29,12 +30,13 @@ export default function PawApp(){
   const t=useCallback((key:string)=>translate(key,locale),[locale]);
   useEffect(()=>{const saved=localStorage.getItem('paw-points-language');if(languages.some(l=>l.code===saved))setLocale(saved as Locale);setReady(true)},[]);
   useEffect(()=>{document.documentElement.lang=locale},[locale]);
+  useEffect(()=>{refreshLive();const timer=setInterval(refreshLive,30000);return()=>clearInterval(timer)},[]);
   useEffect(()=>{if(toast){const timer=setTimeout(()=>setToast(''),4500);return()=>clearTimeout(timer)}},[toast]);
   useEffect(()=>{setToast('')},[path]);
   const notify=(text:string)=>{setToast('');setTimeout(()=>setToast(text),0)};
   const action=(command:Command,success='Saved. A little closer, together.',id?:string)=>{
     if(requiresAccount(command)&&!data.demoSignedIn){setLoginPrompt(true);return false}
-    try{dispatch(command,id);if(success)notify(success);return true}catch(e){notify((e as Error).message);return false}
+    try{dispatch(command,id);if(success)notify(success);mirror(command,usePawStore.getState().data).then(error=>{if(error)notify('Not saved to the live board: '+error)});return true}catch(e){notify((e as Error).message);return false}
   };
   const share=async(catId:string)=>{
     const base=process.env.NEXT_PUBLIC_BASE_PATH??'';

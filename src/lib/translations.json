@@ -774,10 +774,10 @@
     "加入人氣投票",
     "Participar na votação"
   ],
-  "Fictional seed votes + your local votes. Not a global ranking.": [
-    "虚构初始票数＋你的本地投票，并非全球排行榜。",
-    "虛構初始票數＋你的本地投票，並非全球排行榜。",
-    "Votos iniciais fictícios + votos locais. Não é uma classificação global."
+  "Live board: real free votes from all fans, updated every 30 seconds.": [
+    "实时榜单：所有粉丝的真实免费投票，每 30 秒更新。",
+    "即時榜單：所有粉絲的真實免費投票，每 30 秒更新。",
+    "Classificação ao vivo: votos gratuitos reais de todos os fãs, atualizada a cada 30 segundos."
   ],
   "YOUR LITTLE CIRCLE": [
     "属于你的陪伴圈",
@@ -1999,20 +1999,20 @@
     "手機導覽",
     "Navegação móvel"
   ],
-  "FICTIONAL DEMO · LOCAL DATA": [
-    "虚构演示 · 本地数据",
-    "虛構演示 · 本地資料",
-    "DEMONSTRAÇÃO · DADOS LOCAIS"
+  "FICTIONAL DEMO · LIVE FAN BOARD": [
+    "虚构演示 · 实时粉丝榜",
+    "虛構演示 · 即時粉絲榜",
+    "DEMONSTRAÇÃO · RANKING AO VIVO"
   ],
   "Opening your little world of paws…": [
     "正在打开你的猫咪世界…",
     "正在開啟你的貓咪世界…",
     "A abrir o teu mundo felino…"
   ],
-  "Fictional café and sample cat identities. No real payments, bookings, care delivery, shipping or adoption. All data stays in this browser.": [
-    "猫咖与猫咪身份均为虚构示例。没有真实支付、预订、照护交付、寄送或领养，全部数据保存在本浏览器。",
-    "貓咖與貓咪身份均為虛構示例。沒有真實支付、預訂、照護交付、寄送或領養，全部資料儲存在本瀏覽器。",
-    "Café e identidades fictícios. Sem pagamentos, reservas, cuidados, envios ou adoções reais. Dados guardados neste navegador."
+  "Fictional café and sample cat identities. No real payments, bookings, care delivery, shipping or adoption. Votes, follows and demo orders go to the Paw Points operations sheet under an anonymous fan ID.": [
+    "猫咖与猫咪身份均为虚构示例。没有真实支付、预订、照护交付、寄送或领养。投票、关注和演示订单会以匿名粉丝编号记录到 Paw Points 运营表。",
+    "貓咖與貓咪身份均為虛構示例。沒有真實支付、預訂、照護交付、寄送或領養。投票、關注和演示訂單會以匿名粉絲編號記錄到 Paw Points 營運表。",
+    "Café e identidades fictícios. Sem pagamentos, reservas, cuidados, envios ou adoções reais. Votos, seguidores e encomendas de demonstração vão para a folha de operações da Paw Points com um ID de fã anónimo."
   ],
   "Unknown cat": [
     "未知猫咪",
