@@ -38,9 +38,10 @@ export interface VotingService {
   rankings(state: DemoState, now?: Date): VoteAllocation[];
   cast(state: DemoState, catId: string, id: string, now?: Date): DemoState;
 }
-export function rankings(s: DemoState, now = new Date()): VoteAllocation[] {
+// live: season vote totals from the ops sheet; when present they replace seed plus local votes.
+export function rankings(s: DemoState, now = new Date(), live?: Record<string, {votes:number}> | null): VoteAllocation[] {
   const season = seasonAt(now).id;
-  return cats.map(cat => ({catId:cat.id,total:cat.seedVotes+s.votes.filter(v=>v.catId===cat.id&&v.seasonId===season).length,rank:0}))
+  return cats.map(cat => ({catId:cat.id,total:live?live[cat.id]?.votes??0:cat.seedVotes+s.votes.filter(v=>v.catId===cat.id&&v.seasonId===season).length,rank:0}))
     .sort((a,b)=>b.total-a.total||a.catId.localeCompare(b.catId)).map((row,i)=>({...row,rank:i+1}));
 }
 export const localVotingService: VotingService = {remaining:remainingVotes,rankings,cast:(s,catId,id,now)=>act(s,{type:'vote',catId},id,now)};
