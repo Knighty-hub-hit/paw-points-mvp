@@ -12,6 +12,12 @@ export function EntryTracker(){
   useEffect(()=>{
     const url=new URL(location.href), id=pathname.split('/').filter(Boolean)[1];
     const cat=pathname.startsWith('/cats/')?cats.find(c=>c.id===id):undefined;
+    const pendingQr=pathname==='/' && document.cookie.split('; ').includes('paw-qr-entry=pawbrew');
+    if(pendingQr){
+      document.cookie='paw-qr-entry=; Path=/; Max-Age=0; SameSite=Lax';
+      try{localStorage.setItem('paw-cafe-context','pawbrew')}catch{}
+      void localEntryAnalytics.record({cafeId:'paw-macau',source:'QR',timestamp:new Date().toISOString()});
+    }
     const cafe=pathname.replace(/\/$/,'')==='/enter'?resolveCafe(url.searchParams.get('cafe')||''):undefined;
     if(cafe || (cat && url.searchParams.get('source')==='qr')) void localEntryAnalytics.record({cafeId:(cafe?.id||cat!.cafeId),...(cat?{catId:cat.id}:{}),source:'QR',timestamp:new Date().toISOString()});
   },[pathname]);return null;
